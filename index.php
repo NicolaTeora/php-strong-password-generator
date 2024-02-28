@@ -1,3 +1,4 @@
+<!-- spostiamo la logica in un file functions.php che includeremo poi nella pagina principale -->
 <?php    include './function.php'; ?>
     
 <!DOCTYPE html>
@@ -17,11 +18,11 @@
         <!-- Creare un form che invii in GET la lunghezza della password -->
         <form method="GET" class="form-control">
             <label for="" class="form-label">Inserisci</label>
-            <input type="number" min="1" max="57" name="length-password" class="form-control col-3" placeholder="scegli lunghezza password">
-            <button class="btn btn-primary mt-3">Invia</button>
+            <input type="number" min="1" max="67" name="length-password" class="form-control col-3" placeholder="scegli lunghezza password">
+            <button class="btn btn-primary mt-3">Genera</button>
         </form>
 
-        <div class="card p-2">
+        <div class="card p-2 mt-4">
             <?php foreach ($password as $value): ?>
                 <?php echo implode($value) ?>
             <?php endforeach; ?>
