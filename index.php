@@ -1,13 +1,9 @@
 <?php 
-    $length_password = $_GET['length-password'] ?? '';
+    $length_password = (int) $_GET['length-password'] ?? '';
     var_dump($length_password);
 
     $password = [];
     $password[] = generatePassword($password, $length_password);
-    $test = [1,2,3,4];
-
-    var_dump($password);
-
 
     /*
     Una nostra funzione utilizzerà questo dato per generare una password casuale 
@@ -15,14 +11,15 @@
     */
     function generatePassword($array, $lenght){
         while (count($array) < $lenght) {
-            $number = rand(0, 10);
+            $number = rand(0, 9);
             $array[] = $number;
+            
         }
         return $array;
     };
 
 ?>
-
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
