@@ -5,23 +5,42 @@
     $password = [];
     $password[] = generatePassword($password, $length_password);
 
+    /*
     $alfabet = range('a', 'z');
     var_dump(implode($alfabet));
     $numbers = range(0, 9);
     var_dump(implode($numbers));
-    $alfabet_uppercase = range('A', 'Z');
-    var_dump(implode($alfabet_uppercase));
-
+    $alfabet_uppercase = range('A', 'z');
+    $alfabet_uppercase = str_replace(["^", "`", "="], ["#","&","£"], $alfabet_uppercase);
+    var_dump(implode(",", $alfabet_uppercase));
+    */
+    
     /*
     Una nostra funzione utilizzerà questo dato per generare una password casuale 
     (composta da lettere, lettere maiuscole, numeri e simboli).
-    */
     function generatePassword($array, $lenght){
         while (count($array) < $lenght) {
             $number = rand(0, 9);
             $array[] = $number;
         }
         return $array;
+    };
+    */
+    
+    function generatePassword($array, $lenght){
+        $numbers = range(0, 9);
+        var_dump(implode($numbers));
+        $alfabet_uppercase = range('A', 'z');
+        $alfabet_uppercase = str_replace(["^", "`", "="], ["#","&","£"], $alfabet_uppercase);
+        var_dump(implode(",", $alfabet_uppercase));
+        var_dump(sizeof($alfabet_uppercase));
+
+        
+        while (count($array) < $lenght) {
+                $index = rand(0, 57);
+                $array[] = $alfabet_uppercase[$index];
+            }
+            return $array;
     };
 
 ?>
