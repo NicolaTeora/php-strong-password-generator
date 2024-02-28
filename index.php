@@ -1,49 +1,4 @@
-<?php 
-    $length_password = (int) $_GET['length-password'] ?? '';
-    var_dump($length_password);
-
-    $password = [];
-    $password[] = generatePassword($password, $length_password);
-
-    /*
-    $alfabet = range('a', 'z');
-    var_dump(implode($alfabet));
-    $numbers = range(0, 9);
-    var_dump(implode($numbers));
-    $alfabet_uppercase = range('A', 'z');
-    $alfabet_uppercase = str_replace(["^", "`", "="], ["#","&","£"], $alfabet_uppercase);
-    var_dump(implode(",", $alfabet_uppercase));
-    */
-    
-    /*
-    Una nostra funzione utilizzerà questo dato per generare una password casuale 
-    (composta da lettere, lettere maiuscole, numeri e simboli).
-    function generatePassword($array, $lenght){
-        while (count($array) < $lenght) {
-            $number = rand(0, 9);
-            $array[] = $number;
-        }
-        return $array;
-    };
-    */
-    
-    function generatePassword($array, $lenght){
-        $numbers = range(0, 9);
-        var_dump(implode($numbers));
-        $alfabet_uppercase = range('A', 'z');
-        $alfabet_uppercase = str_replace(["^", "`", "="], ["#","&","£"], $alfabet_uppercase);
-        var_dump(implode(",", $alfabet_uppercase));
-        var_dump(sizeof($alfabet_uppercase));
-
-        
-        while (count($array) < $lenght) {
-                $index = rand(0, 57);
-                $array[] = $alfabet_uppercase[$index];
-            }
-            return $array;
-    };
-
-?>
+<?php    include './function.php'; ?>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -62,13 +17,13 @@
         <!-- Creare un form che invii in GET la lunghezza della password -->
         <form method="GET" class="form-control">
             <label for="" class="form-label">Inserisci</label>
-            <input type="number" min="1" max="10" name="length-password" class="form-control col-3" placeholder="scegli lunghezza password">
+            <input type="number" min="1" max="57" name="length-password" class="form-control col-3" placeholder="scegli lunghezza password">
             <button class="btn btn-primary mt-3">Invia</button>
         </form>
 
-        <div class="card col-3 p-2">
-            <?php foreach ($password as $number): ?>
-                <?php echo implode($number) ?>
+        <div class="card p-2">
+            <?php foreach ($password as $value): ?>
+                <?php echo implode($value) ?>
             <?php endforeach; ?>
         </div>
     
