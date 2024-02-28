@@ -5,6 +5,13 @@
     $password = [];
     $password[] = generatePassword($password, $length_password);
 
+    $alfabet = range('a', 'z');
+    var_dump(implode($alfabet));
+    $numbers = range(0, 9);
+    var_dump(implode($numbers));
+    $alfabet_uppercase = range('A', 'Z');
+    var_dump(implode($alfabet_uppercase));
+
     /*
     Una nostra funzione utilizzerà questo dato per generare una password casuale 
     (composta da lettere, lettere maiuscole, numeri e simboli).
@@ -13,7 +20,6 @@
         while (count($array) < $lenght) {
             $number = rand(0, 9);
             $array[] = $number;
-            
         }
         return $array;
     };
