@@ -1,11 +1,26 @@
 <?php 
-    $lenght_password = $_GET['lenght-password'];
-    var_dump($lenght_password);
+    $length_password = $_GET['length-password'] ?? '';
+    var_dump($length_password);
+
+    $password = [];
+    $password[] = generatePassword($password, $length_password);
+    $test = [1,2,3,4];
+
+    var_dump($password);
+
 
     /*
     Una nostra funzione utilizzerà questo dato per generare una password casuale 
     (composta da lettere, lettere maiuscole, numeri e simboli).
     */
+    function generatePassword($array, $lenght){
+        while (count($array) < $lenght) {
+            $number = rand(0, 10);
+            $array[] = $number;
+        }
+        return $array;
+    };
+
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +28,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Password</title>
 
     <!-- cdn bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -25,9 +40,15 @@
         <!-- Creare un form che invii in GET la lunghezza della password -->
         <form method="GET" class="form-control">
             <label for="" class="form-label">Inserisci</label>
-            <input type="number" min="3" max="10" name="lenght-password" class="form-control col-3" placeholder="val min 3">
+            <input type="number" min="1" max="10" name="length-password" class="form-control col-3" placeholder="scegli lunghezza password">
             <button class="btn btn-primary mt-3">Invia</button>
         </form>
+
+        <div class="card col-3 p-2">
+            <?php foreach ($password as $number): ?>
+                <?php echo implode($number) ?>
+            <?php endforeach; ?>
+        </div>
     
     </div>
 
