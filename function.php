@@ -1,7 +1,12 @@
 <!-- spostiamo la logica in un file functions.php che includeremo poi nella pagina principale -->
 <?php 
-    $length_password = (int) $_GET['length-password'] ?? '';
+    $length_password = isset($_GET['length-password']) ? (int) $_GET['length-password'] : 0;
     //var_dump($length_password);
+
+    /*
+    condizione per verificare che un form sia stato inviato
+    $var = !empty($_GET);
+    */
 
     $password = [];
     $password[] = generatePassword($password, $length_password);
@@ -22,9 +27,11 @@
             $alfabet_alpha[] = $numbers[$i];    
         };
         
+        # sostituisco alcuni simboli
         $alfabet_alpha = str_replace(["^", "`", "="], ["#","&","£"], $alfabet_alpha);
         
         while (count($array) < $lenght) {
+            # genero un indice casuale per il recupero dall'array
             $index = rand(0, sizeof($alfabet_alpha));
             $array[] = $alfabet_alpha[$index];
         }
